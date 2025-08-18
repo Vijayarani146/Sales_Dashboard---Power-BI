@@ -46,16 +46,18 @@ Top Category = CALCULATE([Total Sales], TOPN(1, VALUES('Sales'[Category]), [Tota
 # Power BI Dashboard - Sales & Orders Analysis  
 
 ## 📌 Project Overview  
-This project showcases an interactive **Power BI dashboard** designed to analyze sales, orders, customer profiles, and returns. It leverages custom DAX measures and calculated columns to provide actionable insights for decision-making.  
+This project showcases an interactive **Power BI dashboard** designed to analyze sales, orders, customer profiles, and returns. It leverages custom DAX measures and calculated columns to provide actionable insights for decision-making.
 
-## 📂 Dataset Used  
+---
+
+### 📂 Dataset Used  
 - **Final_Sales** – Order details including product price, order quantity, and sales.  
 - **DateTable** – Custom date dimension for time intelligence calculations.  
 - **Returns** – Return orders with quantities.  
 - **Customers Table** – Customer demographics, including income and family details.  
 - **Price Adjustment(%)** – Adjustment factors for dynamic product pricing.  
 
-## 🎯 Dashboard Goals  
+### 🎯 Dashboard Goals  
 - Track **monthly and yearly sales performance**  
 - Monitor **order trends and KPIs**  
 - Calculate **returns and profitability metrics**  
@@ -167,7 +169,7 @@ Status =
 
 ---
 
-## 🚀 Usage
+### 🚀 Usage
 
 These measures and columns were created to enhance reporting and analytics within the Power BI dashboard. They support insights into:
 
