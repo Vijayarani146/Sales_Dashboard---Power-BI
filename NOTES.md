@@ -34,14 +34,6 @@
 - **Interactivity**: Enabled slicers and cross-filtering for intuitive analysis.
 
 ---
-
-## 🧮 DAX Measures (Samples)
-
-```DAX
-Total Sales = SUM('Sales'[Sales Amount])
-Profit Margin = DIVIDE(SUM('Sales'[Profit]), SUM('Sales'[Sales Amount]))
-Top Category = CALCULATE([Total Sales], TOPN(1, VALUES('Sales'[Category]), [Total Sales], DESC))
-
 # Power BI Dashboard - Sales & Orders Analysis  
 
 ## 📌 Project Overview  
@@ -69,7 +61,8 @@ This repository contains the DAX measures and calculated columns used in my Powe
 
 ---
 
-## 🧮 DAX Measures  
+## 🧮 DAX Measures
+-**This measure calculates the percentage contribution of sales compared to the overall total.**
 
 1. **% Sales**
 ```DAX
@@ -77,6 +70,7 @@ This repository contains the DAX measures and calculated columns used in my Powe
 ```
 
 2. **Adjusted Sales**
+ -**Calculates sales after applying price adjustment percentages dynamically.**
 ```DAX
 Adjusted Sales = 
     SUMX(
@@ -88,12 +82,14 @@ Adjusted Sales =
 ```
 
 3. **Orders KPI Title Card**
+-**Generates a dynamic KPI title showing the latest order month.**
 ```DAX
 Orders_KPI Title Card = 
     FORMAT(MAX(DateTable[YearMonth]), "mmm-yyyy") & " Orders"
 ```
 
 4. **Previous Month Orders**
+-**Counts distinct orders from the previous month.**
 ```DAX
 Previous Month Orders 1 = 
     CALCULATE(
@@ -103,6 +99,7 @@ Previous Month Orders 1 =
 ```
 
 5. **Previous Year Sales**
+-**Calculates total sales from the previous year.**
 ```DAX
 PreviousYearSales =
     CALCULATE(
@@ -112,22 +109,26 @@ PreviousYearSales =
 ```
 
 6. **Returns %**
+-**Percentage of returns compared to total orders.**
 ```DAX
 Returns % = 
     SUM(Returns[ReturnQuantity]) / DISTINCTCOUNT(Final_Sales[OrderNumber])
 ```
 
 7. **Total Return**
+--**Total quantity of returned items.**
 ```DAX
 Total Return = SUM(Returns[ReturnQuantity])
 ```
 
 8. **Orders Count**
+-**Counts total orders placed.**
 ```DAX
 Orders Count = COUNT(Final_Sales[OrderNumber])
 ```
 
 9. **New Product Price**
+-**Applies 1.5x pricing on weekends (Sat/Sun), else keeps original price.**
 ```DAX
 newproductprice =
 VAR checkweekend = FORMAT(Final_Sales[OrderDate], "ddd") IN {"Sat", "Sun"}
