@@ -45,18 +45,16 @@ Top Category = CALCULATE([Total Sales], TOPN(1, VALUES('Sales'[Category]), [Tota
 # Power BI Dashboard - Sales & Orders Analysis  
 
 ## 📌 Project Overview  
-This project showcases an interactive **Power BI dashboard** designed to analyze sales, orders, customer profiles, and returns. It leverages custom DAX measures and calculated columns to provide actionable insights for decision-making.
+This project showcases an interactive **Power BI dashboard** designed to analyze sales, orders, customer profiles, and returns. It leverages custom DAX measures and calculated columns to provide actionable insights for decision-making.  
 
----
-
-### 📂 Dataset Used  
+## 📂 Dataset Used  
 - **Final_Sales** – Order details including product price, order quantity, and sales.  
 - **DateTable** – Custom date dimension for time intelligence calculations.  
 - **Returns** – Return orders with quantities.  
 - **Customers Table** – Customer demographics, including income and family details.  
 - **Price Adjustment(%)** – Adjustment factors for dynamic product pricing.  
 
-### 🎯 Dashboard Goals  
+## 🎯 Dashboard Goals  
 - Track **monthly and yearly sales performance**  
 - Monitor **order trends and KPIs**  
 - Calculate **returns and profitability metrics**  
@@ -65,21 +63,21 @@ This project showcases an interactive **Power BI dashboard** designed to analyze
 
 ---
 
-# 📊 Power BI Dashboard - DAX Measures & Columns  
+# Power BI Dashboard - DAX Measures & Columns  
 
 This repository contains the DAX measures and calculated columns used in my Power BI Dashboard project.
 
 ---
 
-## 🧮 DAX Measures  
+## 📊 DAX Measures  
 
 1. **% Sales**
-``` DAX
+```DAX
 %sales = [TotalSales] / [TotalSalesAll1]
 ```
 
 2. **Adjusted Sales**
-``` DAX
+```DAX
 Adjusted Sales = 
     SUMX(
         Final_Sales,
@@ -90,13 +88,13 @@ Adjusted Sales =
 ```
 
 3. **Orders KPI Title Card**
-``` DAX
+```DAX
 Orders_KPI Title Card = 
     FORMAT(MAX(DateTable[YearMonth]), "mmm-yyyy") & " Orders"
 ```
 
 4. **Previous Month Orders**
-``` DAX
+```DAX
 Previous Month Orders 1 = 
     CALCULATE(
         DISTINCTCOUNT(Final_Sales[OrderNumber]),
@@ -105,7 +103,7 @@ Previous Month Orders 1 =
 ```
 
 5. **Previous Year Sales**
-`` `DAX
+```DAX
 PreviousYearSales =
     CALCULATE(
         SUM(Final_Sales[Sales]),
@@ -114,18 +112,18 @@ PreviousYearSales =
 ```
 
 6. **Returns %**
-``` DAX
+```DAX
 Returns % = 
     SUM(Returns[ReturnQuantity]) / DISTINCTCOUNT(Final_Sales[OrderNumber])
 ```
 
 7. **Total Return**
-`` `DAX
+```DAX
 Total Return = SUM(Returns[ReturnQuantity])
 ```
 
 8. **Orders Count**
-``` DAX
+```DAX
 Orders Count = COUNT(Final_Sales[OrderNumber])
 ```
 
@@ -143,7 +141,7 @@ RETURN IF(checkweekend, newproductprice, oldproductprice)
 ## 🏷️ Calculated Columns
 
 1. **Full Name**
-``` DAX
+```DAX
 Full Name = 'Customers Table'[FirstName] & " " & 'Customers Table'[LastName]
 ```
 
@@ -153,7 +151,7 @@ ParentStatus = IF('Customers Table'[TotalChildren] = 0, "Not Parent", "Parent")
 ```
 
 3. **Status**
-`` `DAX
+```DAX
 Status = 
     IF(
         'Customers Table'[AnnualIncome] >= 100000, 
@@ -168,7 +166,7 @@ Status =
 
 ---
 
-### 🚀 Usage
+## 🚀 Usage
 
 These measures and columns were created to enhance reporting and analytics within the Power BI dashboard. They support insights into:
 
