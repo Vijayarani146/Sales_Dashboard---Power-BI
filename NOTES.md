@@ -36,7 +36,7 @@
 ---
 
 ## 🧮 DAX Measures (Samples)
-```DAX
+``` DAX
 Total Sales = SUM('Sales'[Sales Amount])
 Profit Margin = DIVIDE(SUM('Sales'[Profit]), SUM('Sales'[Sales Amount]))
 Top Category = CALCULATE([Total Sales], TOPN(1, VALUES('Sales'[Category]), [Total Sales], DESC))
@@ -50,7 +50,7 @@ This project showcases an interactive **Power BI dashboard** designed to analyze
 - **Final_Sales** – Order details including product price, order quantity, and sales.  
 - **DateTable** – Custom date dimension for time intelligence calculations.  
 - **Returns** – Return orders with quantities.  
-- **Customers Table** – Customer demographics including income and family details.  
+- **Customers Table** – Customer demographics, including income and family details.  
 - **Price Adjustment(%)** – Adjustment factors for dynamic product pricing.  
 
 ## 🎯 Dashboard Goals  
@@ -71,12 +71,12 @@ This repository contains the DAX measures and calculated columns used in my Powe
 ## 📊 DAX Measures  
 
 1. **% Sales**
-```DAX
+``` DAX
 %sales = [TotalSales] / [TotalSalesAll1]
 ```
 
 2. **Adjusted Sales**
-```DAX
+``` DAX
 Adjusted Sales = 
     SUMX(
         Final_Sales,
@@ -87,13 +87,13 @@ Adjusted Sales =
 ```
 
 3. **Orders KPI Title Card**
-```DAX
+``` DAX
 Orders_KPI Title Card = 
     FORMAT(MAX(DateTable[YearMonth]), "mmm-yyyy") & " Orders"
 ```
 
 4. **Previous Month Orders**
-```DAX
+``` DAX
 Previous Month Orders 1 = 
     CALCULATE(
         DISTINCTCOUNT(Final_Sales[OrderNumber]),
@@ -102,7 +102,7 @@ Previous Month Orders 1 =
 ```
 
 5. **Previous Year Sales**
-```DAX
+`` `DAX
 PreviousYearSales =
     CALCULATE(
         SUM(Final_Sales[Sales]),
@@ -111,18 +111,18 @@ PreviousYearSales =
 ```
 
 6. **Returns %**
-```DAX
+``` DAX
 Returns % = 
     SUM(Returns[ReturnQuantity]) / DISTINCTCOUNT(Final_Sales[OrderNumber])
 ```
 
 7. **Total Return**
-```DAX
+`` `DAX
 Total Return = SUM(Returns[ReturnQuantity])
 ```
 
 8. **Orders Count**
-```DAX
+``` DAX
 Orders Count = COUNT(Final_Sales[OrderNumber])
 ```
 
@@ -140,7 +140,7 @@ RETURN IF(checkweekend, newproductprice, oldproductprice)
 ## 🏷️ Calculated Columns
 
 1. **Full Name**
-```DAX
+``` DAX
 Full Name = 'Customers Table'[FirstName] & " " & 'Customers Table'[LastName]
 ```
 
@@ -150,7 +150,7 @@ ParentStatus = IF('Customers Table'[TotalChildren] = 0, "Not Parent", "Parent")
 ```
 
 3. **Status**
-```DAX
+`` `DAX
 Status = 
     IF(
         'Customers Table'[AnnualIncome] >= 100000, 
