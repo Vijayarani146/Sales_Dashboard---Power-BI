@@ -63,17 +63,17 @@ This project showcases an interactive **Power BI dashboard** designed to analyze
 
 ---
 
-# Power BI Dashboard - DAX Measures & Columns  
+# 📊 Power BI Dashboard - DAX Measures & Columns  
 
 This repository contains the DAX measures and calculated columns used in my Power BI Dashboard project.
 
 ---
 
-## 📊 DAX Measures  
+## 🧮 DAX Measures  
 
 1. **% Sales**
 ```DAX
-%sales = [TotalSales] / [TotalSalesAll1]
+% Sales = DIVIDE([TotalSales], [TotalSalesAll1])
 ```
 
 2. **Adjusted Sales**
