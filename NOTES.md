@@ -37,11 +37,10 @@
 
 ## 🧮 DAX Measures (Samples)
 
-``` DAX
+```DAX
 Total Sales = SUM('Sales'[Sales Amount])
 Profit Margin = DIVIDE(SUM('Sales'[Profit]), SUM('Sales'[Sales Amount]))
 Top Category = CALCULATE([Total Sales], TOPN(1, VALUES('Sales'[Category]), [Total Sales], DESC))
-
 
 # Power BI Dashboard - Sales & Orders Analysis  
 
